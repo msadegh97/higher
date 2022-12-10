@@ -360,7 +360,7 @@ class DifferentiableAdam(DifferentiableOptimizer):
                     )
                     # Use the max. for normalizing running avg. of gradient
                     denom = _add(
-                        max_exp_avg_sq.sqrt() / _math.sqrt(bias_correction2),
+                        (max_exp_avg_sq+1e-18).sqrt() / _math.sqrt(bias_correction2),
                         group['eps']
                     )
                 else:
